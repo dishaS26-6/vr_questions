@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>VR Feedback</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Background -->
+      <a-sky color="#ECECEC"></a-sky>
+
+      <!-- Main Panel -->
+      <a-entity position="0 1.6 -3">
+        <a-plane color="#FFFFFF" width="2.5" height="1.5" material="shader: flat">
+          <!-- Submit Button -->
+          <a-box id="submitBtn"
+                 position="0 -0.5 0.01"
+                 depth="0.1" height="0.3" width="1"
+                 color="#4CAF50"
+                 event-set__enter="_event: mouseenter; color: #45a049"
+                 event-set__leave="_event: mouseleave; color: #4CAF50">
+            <a-text value="Submit"
+                    align="center"
+                    color="white"
+                    position="0 0 0.06"
+                    width="3"></a-text>
+          </a-box>
+        </a-plane>
+
+        <!-- Question 1 -->
+        <a-text value="1. How was your experience?"
+                position="-1 0.3 0.01"
+                color="black"
+                width="2"></a-text>
+
+        <!-- Question 2 -->
+        <a-text value="2. What could be improved?"
+                position="-1 -0.05 0.01"
+                color="black"
+                width="2"></a-text>
+      </a-entity>
+
+      <!-- Gaze-Based Cursor + Camera -->
+      <a-entity camera look-controls>
+        <a-cursor fuse="true" fuse-timeout="1000"
+                  material="color: black; shader: flat"
+                  geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.015">
+        </a-cursor>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
